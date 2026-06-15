@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Counter App</h1>
+        <div class="input" id="input">0</div>
+        <div class="warning hidden" id="warning">Cannot decrease below 0</div>
+        <button class="btn1" id="increase">Increase</button>
+        <button class="btn2" id="reset">Reset</button>
+        <button class="btn3" id="decrease">Decrease</button>
+    </div>
+    <script>
+        const InputBtn = document.getElementById("input");
+        const WarningBanner = document.getElementById("warning");
+        const IncreaseBtn = document.getElementById("increase");
+        const ResetBtn = document.getElementById('reset');
+        const DecreaseBtn = document.getElementById("decrease");
+        
+        let count = 0;
+
+        const hideWarning = () => {
+            WarningBanner.classList.add('hidden');
+        };
+
+        const showWarning = () => {
+            WarningBanner.classList.remove('hidden');
+        };
+
+        IncreaseBtn.addEventListener("click",() => {
+            count++;
+            InputBtn.textContent = count;
+            hideWarning();
+        })
+        ResetBtn.addEventListener("click",() => {
+            count = 0;
+            InputBtn.textContent = 0;
+            hideWarning();
+        })
+        DecreaseBtn.addEventListener("click",() => {
+            if (count > 0) {
+                count--;
+                InputBtn.textContent = count;
+                hideWarning();
+            } else {
+                InputBtn.textContent = count;
+                showWarning();
+            }
+        })
+    </script>
+</body>
+</html>
